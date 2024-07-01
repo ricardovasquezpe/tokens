@@ -1,0 +1,16 @@
+body{
+    background-color: black !important;
+}
+
+p{
+    color: white
+}
+
+input{
+    color: white
+}
+
+.error{
+    color: #ff4c4c;
+    font-style: italic;
+}
