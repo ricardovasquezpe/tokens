@@ -1,6 +1,7 @@
 import { Box, Button, Grid, GridItem, Input, InputGroup, InputLeftAddon, Text, VStack } from '@chakra-ui/react';
 import './App.css';
 import { useForm } from 'react-hook-form';
+import { sendTokens } from './services/api.service';
 
 function App() {
   const { register: trasnfer, trigger: trasnferTrigger, getValues: trasnferGetValues, formState: { errors }, setValue: trasnferSetValue  } = useForm();
@@ -15,7 +16,13 @@ function App() {
     trasnferSetValue("amount", input);
   }
 
-  const send = async () =>{
+  const send = async () => {
+    var response = await sendTokens({
+        "usuario": "Consultorio.Virtual",
+        "password": "252622c5397efd7801d105c578d69d3d"
+    });
+    console.log(response);
+    
     const isValid = await trasnferTrigger(["amount", "wallet_from", "wallet_to"], { shouldFocus: true });
     if(!isValid){
       return;
